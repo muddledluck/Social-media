@@ -2,7 +2,11 @@ import express from "express";
 import dotenv from "dotenv";
 import { Database } from "./utils/dbConnection";
 import router from "./router";
-dotenv.config();
+import path from "path";
+import EmailService from "./utils/emailService";
+dotenv.config({
+  path: path.resolve(__dirname, "../.env"),
+});
 const PORT = process.env.PORT || 4000;
 
 // database connection
@@ -10,6 +14,11 @@ const db = new Database(
   process.env.mongoURI || "mongodb://0.0.0.0:27017/social-media"
 );
 db.connect();
+
+// email service
+export const emailService = new EmailService();
+emailService.init();
+emailService.verifyConnection();
 
 const app = express();
 app.use(express.json());
