@@ -1,4 +1,5 @@
 import nodemailer, { SentMessageInfo } from "nodemailer";
+import logger from "./logger";
 
 interface EmailOptions {
   to: string;
@@ -66,17 +67,17 @@ class EmailService {
 
     const info = await this.transporter.sendMail(mailOptions);
 
-    console.log(`Message sent: ${info.messageId}`);
+    logger.info(`Message sent: ${info.messageId}`);
     return info;
   }
   async verifyConnection() {
     try {
       await this.transporter.verify();
-      console.log("Email Service is up and running 🚀🚀🚀");
+      logger.info("Email Service is up and running 🚀🚀🚀");
     } catch (error) {
-      console.error("Email Service is down ☹️: ", error);
+      logger.error("Email Service is down ☹️: ", error);
     }
   }
 }
-
-export default EmailService;
+const emailService = new EmailService();
+export default emailService;

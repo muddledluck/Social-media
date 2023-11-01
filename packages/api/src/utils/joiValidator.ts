@@ -7,13 +7,17 @@ class JoiValidator {
     source: "body" | "params" | "query"
   ) {
     return (req: Request, res: Response, next: NextFunction) => {
-      const data = req[source];
-      const { error } = schema.validate(data);
+      // response the all validation errors and convert them to key value pairs and remove the fields that are not in joi schema from the body
+      const { error } = schema.validate(req[source], {
+        abortEarly: false,
+        allowUnknown: true,
+      });
       if (error) {
-        return res.status(400).json({
-          error: "Validation error",
-          message: error.details[0].message,
+        const errors: { [key: string]: string } = {};
+        error.details.forEach((err) => {
+          errors[err.path.join(".")] = err.message;
         });
+        return res.sendBadRequest400Response("Validation Error", errors);
       }
       next();
     };

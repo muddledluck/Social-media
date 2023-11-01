@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import logger from "./logger";
 
 export class Database {
   private mongoURI: string;
@@ -9,10 +10,10 @@ export class Database {
     mongoose
       .connect(this.mongoURI)
       .then(() => {
-        console.log("Database connection successful");
+        logger.info("Database connection successful");
       })
       .catch((err) => {
-        console.log("Database connection error", err);
+        logger.error("Database connection error", err);
       });
   }
 }

@@ -3,7 +3,11 @@ import dotenv from "dotenv";
 import { Database } from "./utils/dbConnection";
 import router from "./router";
 import path from "path";
-import EmailService from "./utils/emailService";
+import emailService from "./utils/emailService";
+import fileUpload from "express-fileupload";
+import logger from "./utils/logger";
+import setupGlobalCustomMiddleware from "./middleware";
+
 dotenv.config({
   path: path.resolve(__dirname, "../.env"),
 });
@@ -16,12 +20,17 @@ const db = new Database(
 db.connect();
 
 // email service
-export const emailService = new EmailService();
 emailService.init();
 emailService.verifyConnection();
 
 const app = express();
 app.use(express.json());
+
+// Setup custom middleware
+setupGlobalCustomMiddleware(app);
+
+// Middleware to parse form data with express-fileupload
+app.use(fileUpload());
 
 app.use((_req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", `*`);
@@ -37,14 +46,14 @@ app.use((_req, res, next) => {
 });
 
 app.get("/", (_req, res) => {
-  res.send("Yay!🚀");
+  res.sendSuccess200Response("Yay!🚀", null);
 });
 
 // routes
 router.forEach((route) => {
-  app.use(route.prefix, route.router);
+  app.use(`/api/v1${route.prefix}`, route.router);
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running 🚀🚀🚀🚀 http://localhost:${PORT}`);
+  logger.info(`Server is running 🚀🚀🚀🚀 http://localhost:${PORT}`);
 });
