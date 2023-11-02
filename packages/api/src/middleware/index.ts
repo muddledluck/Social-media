@@ -1,4 +1,4 @@
-import { Application, Response } from "express";
+import { type Application, type Response } from "express";
 import ResponseSenderMiddleware from "./responseSenderMiddleware";
 
 const setupGlobalCustomMiddleware = (app: Application) => {
@@ -7,42 +7,42 @@ const setupGlobalCustomMiddleware = (app: Application) => {
     const responseSenderMiddleware = new ResponseSenderMiddleware(res);
     res.sendSuccess200Response =
       responseSenderMiddleware.sendSuccess200Response.bind(
-        responseSenderMiddleware
+        responseSenderMiddleware,
       );
     res.sendCreated201Response =
       responseSenderMiddleware.sendCreated201Response.bind(
-        responseSenderMiddleware
+        responseSenderMiddleware,
       );
     res.sendNoContent204Response =
       responseSenderMiddleware.sendNoContent204Response.bind(
-        responseSenderMiddleware
+        responseSenderMiddleware,
       );
     res.sendNotFound404Response =
       responseSenderMiddleware.sendNotFound404Response.bind(
-        responseSenderMiddleware
+        responseSenderMiddleware,
       );
     res.sendForbidden403Response =
       responseSenderMiddleware.sendForbidden403Response.bind(
-        responseSenderMiddleware
+        responseSenderMiddleware,
       );
     res.sendUnauthorized401Response =
       responseSenderMiddleware.sendUnauthorized401Response.bind(
-        responseSenderMiddleware
+        responseSenderMiddleware,
       );
     res.sendBadRequest400Response =
       responseSenderMiddleware.sendBadRequest400Response.bind(
-        responseSenderMiddleware
+        responseSenderMiddleware,
       );
     res.sendErrorResponse = responseSenderMiddleware.sendErrorResponse.bind(
-      responseSenderMiddleware
+      responseSenderMiddleware,
     );
     res.sendCustomSuccessResponse =
       responseSenderMiddleware.sendCustomSuccessResponse.bind(
-        responseSenderMiddleware
+        responseSenderMiddleware,
       );
     res.sendCustomErrorResponse =
       responseSenderMiddleware.sendCustomErrorResponse.bind(
-        responseSenderMiddleware
+        responseSenderMiddleware,
       );
     next();
   });

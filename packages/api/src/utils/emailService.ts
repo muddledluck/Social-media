@@ -1,4 +1,4 @@
-import nodemailer, { SentMessageInfo } from "nodemailer";
+import nodemailer, { type SentMessageInfo } from "nodemailer";
 import logger from "./logger";
 
 interface EmailOptions {
@@ -25,28 +25,28 @@ class EmailService {
   private transporter: nodemailer.Transporter<SentMessageInfo>;
   private fromEmail: string;
   constructor(fromEmail?: string) {
-    this.fromEmail = fromEmail || "";
+    this.fromEmail = fromEmail ?? "";
   }
 
   async init() {
     const options: TransportOptions = {
-      service: process.env.EMAIL_SERVICE || "",
-      host: process.env.EMAIL_HOST || "",
+      service: process.env.EMAIL_SERVICE ?? "",
+      host: process.env.EMAIL_HOST ?? "",
       tls: {
         rejectUnauthorized: process.env.EMAIL_REJECT_UNAUTHORIZED === "true",
       },
       secure: process.env.EMAIL_SECURE === "true",
       port: process.env.EMAIL_PORT ? parseInt(process.env.EMAIL_PORT) : 0,
       auth: {
-        user: process.env.EMAIL_USER || "",
-        pass: process.env.EMAIL_PASS || "",
+        user: process.env.EMAIL_USER ?? "",
+        pass: process.env.EMAIL_PASS ?? "",
       },
     };
     this.transporter = nodemailer.createTransport({
       ...options,
     });
     if (!this.fromEmail) {
-      this.fromEmail = process.env.EMAIL_FROM || "";
+      this.fromEmail = process.env.EMAIL_FROM ?? "";
     }
   }
 
@@ -70,6 +70,7 @@ class EmailService {
     logger.info(`Message sent: ${info.messageId}`);
     return info;
   }
+
   async verifyConnection() {
     try {
       await this.transporter.verify();

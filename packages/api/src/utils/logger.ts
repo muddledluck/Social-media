@@ -9,7 +9,7 @@ interface TransformableInfo {
 }
 
 class Logger {
-  private logger: winston.Logger;
+  private readonly logger: winston.Logger;
   constructor(logFilePath = "logs/") {
     this.logger = winston.createLogger({
       level: "info",
@@ -27,8 +27,8 @@ class Logger {
               : level === "debug"
               ? chalk.blue(formattedMessage)
               : formattedMessage;
-          }
-        )
+          },
+        ),
       ),
       transports: [
         new winston.transports.Console(),
@@ -54,18 +54,22 @@ class Logger {
   private formatArg(arg: any): string {
     return JSON.stringify(arg);
   }
+
   public info(...args: any[]) {
     const message = args.map(this.formatArg).join(" ");
     this.logger.info(message);
   }
+
   public warn(...args: any[]) {
     const message = args.map(this.formatArg).join(" ");
     this.logger.warn(message);
   }
+
   public error(...args: any[]) {
     const message = args.map(this.formatArg).join(" ");
     this.logger.error(message);
   }
+
   public debug(...args: any[]) {
     const message = args.map(this.formatArg).join(" ");
     this.logger.debug(message);

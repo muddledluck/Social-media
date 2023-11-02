@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
+import { type Request, type Response } from "express";
 import { UserService } from "../user.template/user.service";
 
 class AuthController {
-  private userService: UserService;
+  private readonly userService: UserService;
   constructor() {
     this.userService = new UserService();
   }

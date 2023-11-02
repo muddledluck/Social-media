@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model, type Document } from "mongoose";
 import bcrypt from "bcrypt";
 export interface User {
   username: string;
@@ -11,8 +11,8 @@ export interface User {
 export interface UserDocument extends User, Document {
   createdAt: Date;
   updatedAt: Date;
-  updatePassword(newPassword: string): Promise<void>;
-  comparePassword(candidatePassword: string): Promise<boolean>;
+  updatePassword: (newPassword: string) => Promise<void>;
+  comparePassword: (candidatePassword: string) => Promise<boolean>;
 }
 
 const userSchema = new Schema<UserDocument>(
@@ -25,39 +25,34 @@ const userSchema = new Schema<UserDocument>(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) return next();
+  if (!this.isModified("password")) {
+    next();
+    return;
+  }
   try {
     const hashed = await bcrypt.hash(this.get("password"), 10);
     this.set("password", hashed);
-    return next();
+    next();
   } catch (err: any) {
-    return next(err);
+    next(err);
   }
 });
 
 userSchema.methods.updatePassword = async function (newPassword: string) {
-  try {
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
-    this.password = hashedPassword; // Update the hashed password
-    await this.save(); // Save the updated user document
-  } catch (err: any) {
-    throw err;
-  }
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+  this.password = hashedPassword; // Update the hashed password
+  await this.save(); // Save the updated user document
 };
 
 userSchema.methods.comparePassword = async function (
-  candidatePassword: string
+  candidatePassword: string,
 ) {
-  try {
-    const isMatch = await bcrypt.compare(candidatePassword, this.password);
-    return isMatch;
-  } catch (err: any) {
-    throw err;
-  }
+  const isMatch = await bcrypt.compare(candidatePassword, this.password);
+  return isMatch;
 };
 
 const _userModel = model<UserDocument>("User", userSchema);

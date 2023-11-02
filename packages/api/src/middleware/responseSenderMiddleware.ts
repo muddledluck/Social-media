@@ -1,8 +1,8 @@
-import { Response } from "express";
+import { type Response } from "express";
 import logger from "../utils/logger";
 
 class ResponseSenderMiddleware {
-  private res: Response;
+  private readonly res: Response;
 
   constructor(res: Response) {
     this.res = res;
@@ -11,7 +11,7 @@ class ResponseSenderMiddleware {
   private sendResponse(
     status: number,
     message: string,
-    data: any | null = null
+    data: any | null = null,
   ) {
     const response = {
       status,
@@ -38,7 +38,7 @@ class ResponseSenderMiddleware {
 
   public sendNotFound404Response(
     message: string = "Not Found",
-    data: any | null = null
+    data: any | null = null,
   ) {
     logger.error({ url: this.res.req.url, status: 404, message, data });
     this.sendResponse(404, message, data);
@@ -46,7 +46,7 @@ class ResponseSenderMiddleware {
 
   public sendForbidden403Response(
     message: string = "Forbidden",
-    data: any | null = null
+    data: any | null = null,
   ) {
     logger.error({ url: this.res.req.url, status: 403, message, data });
     this.sendResponse(403, message, data);
@@ -54,7 +54,7 @@ class ResponseSenderMiddleware {
 
   public sendUnauthorized401Response(
     message: string = "Unauthorized",
-    data: any | null = null
+    data: any | null = null,
   ) {
     logger.error({ url: this.res.req.url, status: 401, message, data });
     this.sendResponse(401, message, data);
@@ -62,7 +62,7 @@ class ResponseSenderMiddleware {
 
   public sendBadRequest400Response(
     message: string = "Bad Request",
-    data: any | null = null
+    data: any | null = null,
   ) {
     logger.error({ url: this.res.req.url, status: 400, message, data });
     this.sendResponse(400, message, data);
@@ -76,7 +76,7 @@ class ResponseSenderMiddleware {
   public sendCustomSuccessResponse(
     status: number,
     message: string,
-    data: any | null = null
+    data: any | null = null,
   ) {
     logger.info({ url: this.res.req.url, status, message, data });
     this.sendResponse(status, message, data);
@@ -85,7 +85,7 @@ class ResponseSenderMiddleware {
   public sendCustomErrorResponse(
     status: number,
     message: string,
-    data: any | null = null
+    data: any | null = null,
   ) {
     logger.error({ url: this.res.req.url, status, message, data });
     this.sendResponse(status, message, data);

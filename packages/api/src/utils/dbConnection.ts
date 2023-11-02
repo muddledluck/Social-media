@@ -2,10 +2,11 @@ import mongoose from "mongoose";
 import logger from "./logger";
 
 export class Database {
-  private mongoURI: string;
+  private readonly mongoURI: string;
   constructor(uri: string) {
     this.mongoURI = uri;
   }
+
   connect() {
     mongoose
       .connect(this.mongoURI)

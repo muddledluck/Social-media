@@ -5,11 +5,11 @@ import JoiValidator from "../../utils/joiValidator";
 
 const authRoute = express.Router();
 const authController = new AuthController();
-
+const joiValidator = new JoiValidator();
 authRoute.post(
   "/create-user",
-  JoiValidator.validate(createUserBodyValidator, "body"),
-  authController.createUser
+  joiValidator.validate(createUserBodyValidator, "body"),
+  authController.createUser,
 );
 
 export default authRoute;

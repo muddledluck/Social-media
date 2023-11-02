@@ -7,21 +7,20 @@ import emailService from "./utils/emailService";
 import fileUpload from "express-fileupload";
 import logger from "./utils/logger";
 import setupGlobalCustomMiddleware from "./middleware";
-
 dotenv.config({
   path: path.resolve(__dirname, "../.env"),
 });
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT ?? 4000;
 
 // database connection
 const db = new Database(
-  process.env.mongoURI || "mongodb://0.0.0.0:27017/social-media"
+  process.env.mongoURI ?? "mongodb://0.0.0.0:27017/social-media",
 );
 db.connect();
 
 // email service
-emailService.init();
-emailService.verifyConnection();
+void emailService.init();
+void emailService.verifyConnection();
 
 const app = express();
 app.use(express.json());
@@ -33,14 +32,14 @@ setupGlobalCustomMiddleware(app);
 app.use(fileUpload());
 
 app.use((_req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", `*`);
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization",
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+    "GET, POST, PATCH, PUT, DELETE, OPTIONS",
   );
   next();
 });
