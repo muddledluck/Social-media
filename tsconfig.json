@@ -5,6 +5,9 @@
     },
     {
       "path": "./packages/api-client"
+    },
+    {
+      "path": "./packages/ui-web"
     }
   ]
 }

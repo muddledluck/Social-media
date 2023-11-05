@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@monorepo/api-client": "1.0.0",
     "react": "^18",
     "react-dom": "^18",
     "next": "14.0.1"

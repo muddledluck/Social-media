@@ -1,6 +1,10 @@
 import { type Response } from "express";
 import logger from "../utils/logger";
-
+export interface ResponseType {
+  status: number;
+  message: string;
+  data: any | null;
+}
 class ResponseSenderMiddleware {
   private readonly res: Response;
 
