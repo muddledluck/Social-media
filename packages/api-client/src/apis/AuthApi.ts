@@ -31,3 +31,5 @@ class _AuthApi extends runetime.BaseAPI {
     return response as ErrorResult;
   }
 }
+
+export const AgencyApi = new _AuthApi();

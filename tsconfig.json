@@ -7,6 +7,9 @@
       "path": "./packages/api-client"
     },
     {
+      "path": "./packages/ui-core"
+    },
+    {
       "path": "./packages/ui-web"
     }
   ]
