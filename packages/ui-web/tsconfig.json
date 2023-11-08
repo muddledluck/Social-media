@@ -21,7 +21,8 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@monorepo/api-client/*": ["../api-client/*"]
+      "@monorepo/api-client/*": ["../api-client/*"],
+      "@monorepo/ui-core/*": ["../ui-core/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

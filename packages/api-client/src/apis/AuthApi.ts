@@ -1,3 +1,4 @@
+import urlcat from "urlcat";
 import { CreateUserRequestDto } from "../models/CreateUserRequestDto";
 import {
   CreateUserResponseDtoFromJSON,
@@ -5,6 +6,7 @@ import {
 } from "../models/CreateUserResponseDto";
 import * as runetime from "../runtime";
 import { ErrorResult, SuccessResult } from "../runtimeType";
+import { AccessTokensResponseDto } from "../models/AccessTokensResponseDto";
 
 class _AuthApi extends runetime.BaseAPI {
   constructor() {
@@ -30,6 +32,43 @@ class _AuthApi extends runetime.BaseAPI {
     }
     return response as ErrorResult;
   }
+  async logout(): Promise<SuccessResult<string> | ErrorResult> {
+    const response = await this.request({
+      url: `/auth/logout`,
+      method: "PUT",
+    });
+    if (response.remote === "success") {
+      return {
+        remote: "success",
+        data: {
+          message: response.data.message,
+          status: response.data.status,
+          data: response.data.data,
+        },
+      };
+    }
+    return response as ErrorResult;
+  }
+
+  async refreshAccessToken(
+    token: string
+  ): Promise<SuccessResult<AccessTokensResponseDto> | ErrorResult> {
+    const response = await this.request({
+      url: urlcat(`/auth/refresh-access-token`, { token }),
+      method: "GET",
+    });
+    if (response.remote === "success") {
+      return {
+        remote: "success",
+        data: {
+          message: response.data.message,
+          status: response.data.status,
+          data: response.data.data,
+        },
+      };
+    }
+    return response as ErrorResult;
+  }
 }
 
-export const AgencyApi = new _AuthApi();
+export const AuthApi = new _AuthApi();

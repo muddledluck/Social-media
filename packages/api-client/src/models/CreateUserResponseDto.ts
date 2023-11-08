@@ -4,6 +4,7 @@ export interface UserType {
   firstName: string;
   lastName: string;
   _id: string;
+  deactivatedAt: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -18,6 +19,7 @@ function CreateUserResponseDtoFromJSONTyped(json: any): UserType {
     email: json["email"],
     firstName: json["firstName"],
     lastName: json["lastName"],
+    deactivatedAt: json["deactivatedAt"],
     createdAt: json["createdAt"],
     updatedAt: json["updatedAt"],
   };
