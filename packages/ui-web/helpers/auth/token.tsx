@@ -13,7 +13,7 @@ import {
 export const refreshAccessToken = async (
   timeRemaining = REFRESH_TIME_REMAINING,
   forceRefresh = false,
-  { access, refresh }: { access?: string | null; refresh?: string | null } = {}
+  { access, refresh }: { access?: string | null; refresh?: string | null } = {},
 ): Promise<AccessTokensResponseDto | undefined> => {
   const accessToken = access
     ? JSON.stringify(access)

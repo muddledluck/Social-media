@@ -19,7 +19,7 @@ declare global {
 type SetValue<T> = Dispatch<React.SetStateAction<T | undefined>>;
 export function useLocalStorage<T>(
   key: string,
-  initialValue: T
+  initialValue: T,
 ): [T, SetValue<T>] {
   const readValue = useCallback((): T => {
     if (typeof window === "undefined") {
@@ -39,7 +39,7 @@ export function useLocalStorage<T>(
     (value: SetStateAction<T | undefined>) => {
       if (typeof window === "undefined") {
         console.warn(
-          `Tried setting localStorage key “${key}” even though environment is not a client`
+          `Tried setting localStorage key “${key}” even though environment is not a client`,
         );
       }
       try {
@@ -55,7 +55,7 @@ export function useLocalStorage<T>(
       } catch (err: unknown) {
         console.error(`Error setting localStorage key “${key}”`, err);
       }
-    }
+    },
   );
 
   useEffect(() => {
@@ -70,7 +70,7 @@ export function useLocalStorage<T>(
       }
       setStoredValue(readValue());
     },
-    [key, readValue]
+    [key, readValue],
   );
 
   useEventListener("storage", handleStorageChange);

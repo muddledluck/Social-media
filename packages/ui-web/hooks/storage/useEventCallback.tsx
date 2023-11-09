@@ -10,7 +10,7 @@ import { useIsomorphicLayoutEffect } from "@/hooks/storage/useIsomorphicLayoutEf
  * @returns {(...args: Args) => Return} A wrapped callback function.
  */
 export function useEventCallback<Args extends unknown[], Return>(
-  callback: (...args: Args) => Return
+  callback: (...args: Args) => Return,
 ): (...args: Args) => Return {
   // This reference stores the callback function. It should not be called during rendering.
   const ref = useRef<typeof callback>(() => {

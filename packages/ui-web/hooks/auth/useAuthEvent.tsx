@@ -12,7 +12,7 @@ export function useAuthEvent(mutateOnTokenChange = true): {
   auth: (
     apiCall: () => Promise<AccessTokensResponseDto>,
     callbackBeforeSet?: ((token: string) => Promise<void> | void) | undefined,
-    callbackAfterSet?: ((token: string) => Promise<void> | void) | undefined
+    callbackAfterSet?: ((token: string) => Promise<void> | void) | undefined,
   ) => Promise<void>;
 } {
   const { accessToken, setAccessToken, setRefreshToken, mutate } = useUserWeb();
@@ -26,7 +26,7 @@ export function useAuthEvent(mutateOnTokenChange = true): {
   const auth = async (
     apiCall: () => Promise<AccessTokensResponseDto>,
     callbackBeforeSet?: (token: string) => Promise<void> | void,
-    callbackAfterSet?: (token: string) => Promise<void> | void
+    callbackAfterSet?: (token: string) => Promise<void> | void,
   ) => {
     const tokens = await apiCall();
     if (!tokens.accessToken) {

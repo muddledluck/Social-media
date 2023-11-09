@@ -5,7 +5,7 @@ import { useUser, UserOptions } from "@monorepo/ui-core/src/hooks/user/useUser";
 import { SWRConfiguration } from "swr";
 export const useUserWeb = (
   options?: Partial<UserOptions>,
-  config?: SWRConfiguration
+  config?: SWRConfiguration,
 ) => {
   const router = useRouter();
   return useUser(
@@ -15,6 +15,6 @@ export const useUserWeb = (
       onLogout: () => router.push("/login"),
       ...options,
     },
-    config
+    config,
   );
 };
