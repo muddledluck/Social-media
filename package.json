@@ -1,5 +1,5 @@
 {
-  "name": "@monorepo/base",
+  "name": "@socialMedia/base",
   "version": "1.0.0",
   "description": "Monorepo Root",
   "repository": {
@@ -10,9 +10,7 @@
   "workspaces": [
     "packages/*"
   ],
-  "scripts": {
-    "dev": "yarn workspaces foreach --exclude @passes/ui-internal -pvi run dev"
-  },
+  "scripts": {},
   "packageManager": "yarn@3.6.4",
   "resolutions": {
     "@types/react": "18.0.20"

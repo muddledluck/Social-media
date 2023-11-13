@@ -1,5 +1,5 @@
 import { useUserWeb } from "@/hooks/user/useUserWeb";
-import { AccessTokensResponseDto } from "@monorepo/api-client/src/models/AccessTokensResponseDto";
+import { AccessTokensResponseDto } from "@socialMedia/api-client/src/models/AccessTokensResponseDto";
 import { useEffect } from "react";
 
 /**

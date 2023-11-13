@@ -1,6 +1,6 @@
-import { UserType } from "@monorepo/api-client/src/models/CreateUserResponseDto";
+import { UserType } from "@socialMedia/api-client/src/models/CreateUserResponseDto";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "src/redux/store";
+import { RootState } from "../store";
 interface GlobalCacheInitialState {
   user: UserType | undefined | null;
   userId: string;

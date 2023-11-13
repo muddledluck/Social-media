@@ -1,4 +1,4 @@
-import { ResponseType } from "@monorepo/api/src/middleware/responseSenderMiddleware";
+import { ResponseType } from "@socialMedia/api/src/middleware/responseSenderMiddleware";
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios";
 import urlcat from "urlcat";
 import { ErrorResult, SuccessResult } from "./runtimeType";
@@ -15,7 +15,7 @@ export class BaseAPI {
   private axiosInstance: AxiosInstance;
   private baseUrl: string;
   constructor() {
-    this.baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+    this.baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "";
     this.axiosInstance = axios.create({
       baseURL: urlcat(this.baseUrl, "/api"),
       headers: {
@@ -42,11 +42,11 @@ export class BaseAPI {
         remote: "success",
         data: response.data,
       };
-    } catch (error) {
+    } catch (error: any) {
       if (error.response) {
         const axiosError = error as AxiosError<ResponseType>;
         let errorMessage = axiosError.response?.data?.message;
-        let errorCode = axiosError.response.status;
+        let errorCode = axiosError.response?.status;
         let errorData = axiosError.response?.data?.data;
         if (errorMessage === undefined) {
           errorMessage = "Something went wrong";

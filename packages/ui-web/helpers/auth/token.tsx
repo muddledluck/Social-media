@@ -1,11 +1,11 @@
-import { AuthApi } from "@monorepo/api-client/src/apis/AuthApi";
-import { AccessTokensResponseDto } from "@monorepo/api-client/src/models/AccessTokensResponseDto";
+import { AuthApi } from "@socialMedia/api-client/src/apis/AuthApi";
+import { AccessTokensResponseDto } from "@socialMedia/api-client/src/models/AccessTokensResponseDto";
 import {
   accessTokenKey,
   REFRESH_TIME_REMAINING,
   refreshTokenKey,
   tokenStillValid,
-} from "@monorepo/ui-core/src/helpers/token";
+} from "@socialMedia/ui-core/src/helpers/token";
 
 /**
  * Updates the access token using the refresh token.
