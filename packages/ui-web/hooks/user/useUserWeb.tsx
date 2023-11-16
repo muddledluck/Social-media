@@ -1,7 +1,10 @@
 import { useLocalStorage } from "@/hooks/storage/useLocalStorage";
 import { refreshAccessToken } from "../../helpers/auth/token";
 import { useRouter } from "next/router";
-import { useUser, UserOptions } from "@socialMedia/ui-core/src/hooks/user/useUser";
+import {
+  useUser,
+  UserOptions,
+} from "@socialMedia/ui-core/src/hooks/user/useUser";
 import { SWRConfiguration } from "swr";
 export const useUserWeb = (
   options?: Partial<UserOptions>,
