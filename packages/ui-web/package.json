@@ -14,11 +14,12 @@
   },
   "dependencies": {
     "@monorepo/api-client": "1.0.0",
-    "@monorepo/ui-core": "1.0.0",
     "@monorepo/shared-constants": "1.0.0",
+    "@monorepo/ui-core": "1.0.0",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-redux": "^8.1.3",
     "swr": "^2.2.4"
   },
   "devDependencies": {
