@@ -83,6 +83,12 @@ export const useUser = (options: UserOptions, config?: SWRConfiguration) => {
     setRefreshToken(undefined);
     onLogout();
   }, [cache, setAccessToken, setRefreshToken]);
+
+  const userClaims = useMemo(
+    () => (accessToken ? decodeJwt(accessToken) : null),
+    [accessToken]
+  );
+
   const key = useMemo(
     () =>
       UserApi.getCurrentUserPath +
@@ -126,5 +132,6 @@ export const useUser = (options: UserOptions, config?: SWRConfiguration) => {
     refreshAccessToken,
     logout,
     isAccessTokenValid,
+    userClaims,
   };
 };

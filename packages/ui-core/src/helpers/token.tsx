@@ -1,6 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 
-export interface JWTUser {
+export interface JWTUserClaims {
   sub: string;
   isVerified: boolean;
   aud: string;
@@ -14,7 +14,8 @@ export const refreshTokenKey = "refresh-token";
 
 const secondsInMinute = 60;
 
-export const decodeJwt = (jwt: string): JWTUser => jwtDecode<JWTUser>(jwt);
+export const decodeJwt = (jwt: string): JWTUserClaims =>
+  jwtDecode<JWTUserClaims>(jwt);
 /**
  * Checks the expiration of the token.
  *
@@ -23,7 +24,7 @@ export const decodeJwt = (jwt: string): JWTUser => jwtDecode<JWTUser>(jwt);
  * @returns Boolean whether or not the token is valid (not expired).
  */
 export const tokenStillValid = (
-  token: JWTUser | string,
+  token: JWTUserClaims | string,
   timeRemaining = 0
 ): boolean => {
   if (typeof token === "string") {
