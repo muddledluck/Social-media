@@ -1,4 +1,4 @@
-import { UserType } from "@socialMedia/api-client/src/models/CreateUserResponseDto";
+import { UserType } from "@social-media/api-client/src/models/CreateUserResponseDto";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 interface GlobalCacheInitialState {

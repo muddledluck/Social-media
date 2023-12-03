@@ -1,5 +1,5 @@
 "use client";
-import { store } from "@socialMedia/ui-core/src/redux/store";
+import { store } from "@social-media/ui-core/src/redux/store";
 import React, { PropsWithChildren } from "react";
 import { Provider } from "react-redux";
 

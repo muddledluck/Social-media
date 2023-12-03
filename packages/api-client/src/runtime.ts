@@ -1,4 +1,4 @@
-import { ResponseType } from "@socialMedia/api/src/middleware/responseSenderMiddleware";
+import { ResponseType } from "@social-media/api/src/middleware/responseSenderMiddleware";
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios";
 import urlcat from "urlcat";
 import { ErrorResult, SuccessResult } from "./runtimeType";

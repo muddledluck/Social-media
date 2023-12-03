@@ -1,5 +1,5 @@
 {
-  "name": "@socialMedia/ui-core",
+  "name": "@social-media/ui-core",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -8,7 +8,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@socialMedia/api-client": "1.0.0",
+    "@social-media/api-client": "1.0.0",
     "@reduxjs/toolkit": "^1.9.7",
     "jwt-decode": "^4.0.0",
     "react": "^18.2.0",

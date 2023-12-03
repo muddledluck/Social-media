@@ -17,8 +17,8 @@
     "incremental": true,
     "paths": {
       "@/*": ["./*"],
-      "@socialMedia/api-client/*": ["../api-client/*"],
-      "@socialMedia/ui-core/*": ["../ui-core/*"]
+      "@social-media/api-client/*": ["../api-client/*"],
+      "@social-media/ui-core/*": ["../ui-core/*"]
     },
     "plugins": [
       {

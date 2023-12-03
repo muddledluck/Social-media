@@ -1,5 +1,5 @@
 import { UseStorageProps } from "../../helpers/storage";
-import { AccessTokensResponseDto } from "@socialMedia/api-client/src/models/AccessTokensResponseDto";
+import { AccessTokensResponseDto } from "@social-media/api-client/src/models/AccessTokensResponseDto";
 import { useAppSelector } from "../../redux/hooks";
 import { globalCacheStateSelector } from "../../redux/slices/globaCache.slice";
 import useSWR, { SWRConfiguration, useSWRConfig } from "swr";
@@ -10,9 +10,9 @@ import {
   tokenStillValid,
 } from "../../helpers/token";
 import { useCallback, useMemo } from "react";
-import { UserType } from "@socialMedia/api-client/src/models/CreateUserResponseDto";
-import { AuthApi } from "@socialMedia/api-client/src/apis/AuthApi";
-import { UserApi } from "@socialMedia/api-client/src/apis/UserApi";
+import { UserType } from "@social-media/api-client/src/models/CreateUserResponseDto";
+import { AuthApi } from "@social-media/api-client/src/apis/AuthApi";
+import { UserApi } from "@social-media/api-client/src/apis/UserApi";
 export interface UserOptions extends UseStorageProps {
   // Required
   onLogout: () => void;

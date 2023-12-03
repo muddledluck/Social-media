@@ -1,9 +1,14 @@
-import authRoute from "../module/auth.template/auth.routes";
+import userRoute from "../module/user/user.routes";
+import authRoute from "../module/auth/auth.routes";
 
 const router = [
   {
     prefix: "/auth",
     router: authRoute,
+  },
+  {
+    prefix: "/user",
+    router: userRoute,
   },
 ];
 

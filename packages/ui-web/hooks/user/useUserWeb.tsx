@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import {
   useUser,
   UserOptions,
-} from "@socialMedia/ui-core/src/hooks/user/useUser";
+} from "@social-media/ui-core/src/hooks/user/useUser";
 import { SWRConfiguration } from "swr";
 export const useUserWeb = (
   options?: Partial<UserOptions>,

@@ -1,11 +1,11 @@
-import { AuthApi } from "@socialMedia/api-client/src/apis/AuthApi";
-import { AccessTokensResponseDto } from "@socialMedia/api-client/src/models/AccessTokensResponseDto";
+import { AuthApi } from "@social-media/api-client/src/apis/AuthApi";
+import { AccessTokensResponseDto } from "@social-media/api-client/src/models/AccessTokensResponseDto";
 import {
   accessTokenKey,
   REFRESH_TIME_REMAINING,
   refreshTokenKey,
   tokenStillValid,
-} from "@socialMedia/ui-core/src/helpers/token";
+} from "@social-media/ui-core/src/helpers/token";
 
 /**
  * Updates the access token using the refresh token.

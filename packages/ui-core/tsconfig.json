@@ -17,7 +17,7 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@socialMedia/api-client/*": ["../api-client/*"]
+      "@social-media/api-client/*": ["../api-client/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "@types/*.d.ts"],

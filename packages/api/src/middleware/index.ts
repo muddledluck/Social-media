@@ -1,5 +1,6 @@
 import { type Application, type Response } from "express";
 import ResponseSenderMiddleware from "./responseSenderMiddleware";
+import accessTokenVerifier from "src/middleware/accessTokenVerifier";
 
 const setupGlobalCustomMiddleware = (app: Application) => {
   // response sender middleware
@@ -44,6 +45,15 @@ const setupGlobalCustomMiddleware = (app: Application) => {
       responseSenderMiddleware.sendCustomErrorResponse.bind(
         responseSenderMiddleware,
       );
+    next();
+  });
+  // accessTokenVerifier middleware
+  app.use(async (req, _res, next) => {
+    const accessToken = req.headers.authorization?.split(" ")[1] ?? "";
+    const userDetails = await accessTokenVerifier(accessToken);
+    if (userDetails) {
+      req.currentUser = userDetails;
+    }
     next();
   });
 };
