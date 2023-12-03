@@ -18,7 +18,8 @@
     "paths": {
       "@/*": ["./*"],
       "@social-media/api-client/*": ["../api-client/*"],
-      "@social-media/ui-core/*": ["../ui-core/*"]
+      "@social-media/ui-core/*": ["../ui-core/*"],
+      "@social-media/shared-constants/*": ["../shared-constants/*"]
     },
     "plugins": [
       {

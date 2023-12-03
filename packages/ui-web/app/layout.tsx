@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Providers from "@/helpers/redux/providers";
+import SubApp from "@/components/SubApp";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,10 +19,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={cn("bg-background text-foreground dark", inter.className)}
-      >
-        <Providers>{children}</Providers>
+      <body className={cn("bg-background text-foreground dark", inter.className)}>
+        <Providers>
+          <SubApp />
+          {children}
+        </Providers>
       </body>
     </html>
   );

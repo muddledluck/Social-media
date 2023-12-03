@@ -24,6 +24,7 @@ void emailService.verifyConnection();
 
 const app = express();
 app.use(express.json());
+app.use(express.static(path.join(process.cwd(), "./public")));
 
 // Setup custom middleware
 setupGlobalCustomMiddleware(app);

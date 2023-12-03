@@ -1,7 +1,7 @@
 {
   "name": "@social-media/base",
   "version": "1.0.0",
-  "description": "Monorepo Root",
+  "description": "social-media Root",
   "repository": {
     "type": "git",
     "url": ""

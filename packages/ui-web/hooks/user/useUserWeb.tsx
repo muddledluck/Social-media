@@ -1,6 +1,6 @@
 import { useLocalStorage } from "@/hooks/storage/useLocalStorage";
 import { refreshAccessToken } from "../../helpers/auth/token";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import {
   useUser,
   UserOptions,

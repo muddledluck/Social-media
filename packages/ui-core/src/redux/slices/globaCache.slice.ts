@@ -1,11 +1,13 @@
 import { UserType } from "@social-media/api-client/src/models/CreateUserResponseDto";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
+import { JWTUserClaims } from "src/helpers/token";
 interface GlobalCacheInitialState {
   user: UserType | undefined | null;
   userId: string;
   accessToken: string;
   userExtension: string;
+  userClaims: JWTUserClaims | undefined | null;
 }
 
 const initialState: GlobalCacheInitialState = {
@@ -13,6 +15,7 @@ const initialState: GlobalCacheInitialState = {
   userId: "",
   accessToken: "",
   userExtension: "",
+  userClaims: undefined,
 };
 
 const globalCacheSlice = createSlice({
