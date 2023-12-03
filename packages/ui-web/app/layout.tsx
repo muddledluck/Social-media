@@ -19,7 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn("bg-background text-foreground dark", inter.className)}>
+      <body
+        className={cn("bg-background text-foreground dark", inter.className)}
+      >
         <Providers>
           <SubApp />
           {children}
