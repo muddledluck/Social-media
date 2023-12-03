@@ -14,7 +14,7 @@ const PORT = process.env.PORT ?? 4000;
 
 // database connection
 const db = new Database(
-  process.env.mongoURI ?? "mongodb://0.0.0.0:27017/social-media",
+  process.env.mongoURI ?? "mongodb://0.0.0.0:27020/social-media",
 );
 db.connect();
 

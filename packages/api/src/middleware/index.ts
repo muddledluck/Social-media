@@ -1,6 +1,6 @@
 import { type Application, type Response } from "express";
 import ResponseSenderMiddleware from "./responseSenderMiddleware";
-import accessTokenVerifier from "src/middleware/accessTokenVerifier";
+import accessTokenVerifier from "./accessTokenVerifier";
 
 const setupGlobalCustomMiddleware = (app: Application) => {
   // response sender middleware
