@@ -1,0 +1,30 @@
+version: "3"
+services:
+  ui-web:
+    container_name: ui-web
+    build:
+      context: .
+      dockerfile: ./packages/ui-web/Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/ui-web
+      - /ui-web/node_modules
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: ./packages/api/Dockerfile
+    restart: always
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/api
+      - /api/node_modules
+    # env_file:
+    #   - .env.development
